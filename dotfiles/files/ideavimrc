@@ -1,0 +1,144 @@
+"""""""""""" Key Map
+let mapleader = ","
+imap jj <Esc>
+imap ;; <Esc>A;
+nmap ;; <Esc>A;<Esc>
+
+
+" For clojure
+" set iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
+set iskeyword=@,48-57,_,192-255
+
+""""""""""""    General
+set updatetime=100
+set autoread
+set clipboard+=unnamedplus,ideaput
+set nowrap        " don't wrap lines
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set backspace=2 " make backspace work like most other apps
+set number
+
+"Setting related to tab
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+
+set foldlevel=9
+
+"set showmatch     " set show matching parenthesis
+"set ignorecase    " ignore case when searching
+"set smartcase     " ignore case if search pattern is all lowercase,
+set nolazyredraw " don't redraw while executing macros
+"set hlsearch      " highlight search terms
+"set incsearch     " show search matches as you type
+
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set title                " change the terminal's title
+"set visualbell           " don't beep
+set noerrorbells         " don't beep
+set vb t_vb=
+set belloff=all
+
+set scrolloff=7 "when jumping makes at least 7 lines from top and bottom
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <up>
+inoremap <down> <down>
+inoremap <left> <left>
+inoremap <right> <right>
+
+nnoremap ( <nop>
+nnoremap ) <nop>
+
+" Plugin emulators
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/argtextobj.vim'
+let g:argtextobj_pairs="(:),{:},<:>"
+"set sneak " Useful but messes with s. Use s<xx> like f<x> but search for two chars
+"Plug 'easymotion/vim-easymotion'
+"set NERDTree
+"set exchange
+set ideajoin
+set 'vim-paragraph-motion'
+set textobj-indent
+
+" Keymaps
+nmap U <Action>($Redo)
+
+nmap <CR> o<Esc>
+onoremap p i(
+
+nmap H ^
+nmap L $
+xmap H ^
+xmap L $
+omap H ^
+omap L $
+
+nnoremap <bs> diw
+inoremap ;; <esc>A;
+
+" Selection
+nmap <space> <Action>(MethodDown)
+nmap <s-space> <Action>(MethodUp)
+
+" Goto and Search
+nmap <leader>ge <Action>(ShowErrorDescription)
+
+" Navigation
+" There is no keybinding or action for creating test. Goto will ask for creating test
+nmap <leader><leader>t <Action>(GotoTest)
+nmap <c-m> %
+vmap <c-m> %
+
+nmap ma <Action>(ToggleBookmarkA)
+nmap mma <Action>(GotoBookmarkA)
+nmap ms <Action>(ToggleBookmarkS)
+nmap mms <Action>(GotoBookmarkS)
+nmap mt <Action>(ToggleBookmarkT)
+nmap mmt <Action>(GotoBookmarkT)
+
+" Refactoring
+nmap <leader><leader>f <Action>(ReformatCode)
+nmap <leader><leader>o <Action>(OptimizeImports)
+vmap <leader><leader>s <Action>(SurroundWith)
+vmap <leader><leader>S <Action>(Unwrap)
+
+nmap <leader><leader>x :%s///g<left><left><left>
+vmap <leader><leader>x :s///g<left><left><left>
+
+
+nmap gii <Action>(ImplementMethods)
+nmap gio <Action>(OverrideMethods)
+
+nmap <C-h> <Action>(MoveElementLeft)
+nmap <C-l> <Action>(MoveElementRight)
+
+" mapped to exapand/shrink selection instead
+" nmap <c-s-j> <Action> extend -> Couldn't find action
+" nmap <c-s-k> <Action> shrink
+
+" Git
+
+" Window
+nmap gwc <Action>(CloseContent)
+nmap gws <Action>(ActivateStructureToolWindow)
+nmap gwh <Action>(HideActiveWindow)
+
+nmap <C-S-l> <C-w>l
+nmap <C-S-h> <C-w>h
+nmap <c-z> <Action>(ToggleDistractionFreeMode)
+
+" Split
+nnoremap <leader><bar> :vsplit<CR>
+
+" Tool
+nmap <leader>w <Action>(KJumpAction.Word0)
+nmap <leader>l <Action>(KJumpAction.Line)
+
+" String Manipulation
+vmap gsa <Action>(StringManipulation.Group.Align)
+vmap gsc <Action>(StringManipulation.Group.SwitchCase)
+vmap gsa <Action>(StringManipulation.AlignSelections)
