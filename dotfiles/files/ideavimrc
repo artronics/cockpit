@@ -77,7 +77,7 @@ xmap L $
 omap H ^
 omap L $
 
-nnoremap <bs> diw
+"nnoremap <bs> diw
 inoremap ;; <esc>A;
 
 " Selection
