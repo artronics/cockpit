@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "karabiner": "bun run karabiner_gen.ts"
+    "karabiner-sym-layer": "bun run karabiner_symbol_layer.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
